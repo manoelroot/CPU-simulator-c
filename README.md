@@ -1,30 +1,50 @@
-## Docx Simples 
----
-Arquivo ASM.SYS_MON - Linux Debian v13 - AMD/Intel 
-Arquitetura - x86/64 
-Compiler/Makefile - asm/nasm/gcc/gdb
+# ASM-SysMon
 
----
+Monitor de sistema em Assembly x86_64 para Linux, usando NASM e syscalls diretas.
 
-## Conceito 
-- main.asm ; Inicia, limpa tela, entra em loop 
-- proc.asm ; Abre arquivos em /proc, lê buffers fixos
-- ui.asm ; Formata e escreve na tela via write  
-- syscalls.asm ; Centraliza read, open, close, exit
----
+O projeto lê dados reais de `/proc` e renderiza uma interface de terminal no estilo DOS/UNIX, sem libc e sem dependências de UI externas.
 
-## Objetivo 
+## Objetivo
 
-- Nome do CPU 
-- Memoria total e disp. 
-- Tempo uptime do sistema 
-> O projeto não usa libc. Tudo é feito via syscalls direta. 
+- Exibir nome do processador.
+- Exibir memória total e memória disponível.
+- Exibir uptime do sistema.
+- Manter uma base modular para evoluir parsing, interface, logs e coleta de métricas.
 
----
-## Projeto
-> Base simples de monitaramento em Assembly, com modularidade, syscalls
-> explicitas Makefile "Pro" e é possivel expandir: parsing real, loop de entrada de teclado, 
-> ncurses-like interface ANSI, logs, cores. 
+## Execução
 
+```bash
+make
+./build/asm-sysmon
+```
 
+Para sair:
 
+```text
+q + Enter
+```
+
+## Estrutura
+
+```text
+include/constants.inc  Constantes de syscall, buffers e refresh
+src/main.asm           Loop principal
+src/proc.asm           Leitura de /proc
+src/ui.asm             Renderização ANSI no terminal
+src/input.asm          Entrada de teclado e saída limpa
+src/syscalls.asm       Wrappers de syscalls Linux
+docs/                  Documentação técnica e planejamento
+```
+
+## Documentação
+
+- [Índice documental](docs/README.md)
+- [Histórico e evolução](docs/history/linha-do-tempo.md)
+- [Arquitetura](docs/architecture/arquitetura.md)
+- [UML](docs/uml/diagramas.md)
+- [Casos de uso](docs/use-cases/casos-de-uso.md)
+- [Padrões modernos aplicados](docs/padroes-modernos.md)
+
+## Importância
+
+ASM-SysMon é útil como estudo prático de baixo nível: mostra como um programa Linux pode coletar dados do sistema, controlar terminal e organizar módulos sem depender de runtime externo.
