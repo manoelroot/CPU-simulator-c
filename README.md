@@ -1,4 +1,4 @@
-# ASM-SysMon
+# simulador_assembly_CPU
 
 Monitor de sistema em Assembly x86_64 para Linux, usando NASM e syscalls diretas.
 
