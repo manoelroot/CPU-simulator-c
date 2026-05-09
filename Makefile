@@ -1,19 +1,21 @@
-NAME=asm-sysmon 
-ASM=nasm 
-ASMFLAGS=-f elf64 -g 
-LD=gcc 
+NAME=asm-sysmon
+ASM=nasm
+ASMFLAGS=-f elf64 -g -F dwarf -Iinclude/
+LD=ld
 
-SRC=src/main.asm src/ui.asm src/proc.asm src/syscalls.asm
-OBJ=$(:.asm=.o)
+SRC=src/main.asm src/ui.asm src/proc.asm src/syscalls.asm src/input.asm
+OBJ=$(SRC:.asm=.o)
 
-all: $(NAME) 
-$(NAME): $(OBJ) 
-	$(LD) -no-pie -o build/$(NAME) $(OBJ)
+all: build/$(NAME)
 
-%.o: %.asm 
+build/$(NAME): $(OBJ)
+	mkdir -p build
+	$(LD) -o $@ $(OBJ)
+
+%.o: %.asm
 	$(ASM) $(ASMFLAGS) $< -o $@
 
-clean: 
+clean:
 	rm -f src/*.o build/$(NAME)
 
 .PHONY: all clean
