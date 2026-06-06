@@ -54,9 +54,23 @@ Ator: estudante ou desenvolvedor.
 Fluxo principal:
 
 1. Usuário lê `syscalls.asm`.
-2. Compara wrappers com chamadas feitas em `proc.asm`, `ui.asm` e `input.asm`.
+2. Compara wrappers com chamadas feitas em `proc.c`, `ui.c` e `input.c`.
 3. Executa o programa e observa o comportamento.
 
 Resultado esperado:
 
 - entendimento prático de `open`, `read`, `write`, `poll`, `nanosleep` e `exit`.
+
+## UC05 - Revisar arquitetura de camadas
+
+Ator: desenvolvedor.
+
+Fluxo principal:
+
+1. Desenvolvedor abre `src/assets/architecture.svg`.
+2. Confere a separação entre C, UI minimalista e Assembly crítico.
+3. Compara o SVG com `docs/architecture/arquitetura.md`.
+
+Resultado esperado:
+
+- entendimento rápido da divisão C/Assembly antes de alterar o código.

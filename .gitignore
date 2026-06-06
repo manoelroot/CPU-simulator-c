@@ -1,3 +1,11 @@
-.vscode
+.vscode/
+
+# Build artifacts
 *.o
 build/
+
+# Local debug/runtime files
+*.log
+*.tmp
+core
+core.*

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">ASM-SysMon C and Assembly architecture</title>
+  <desc id="desc">Layered architecture showing C orchestration, graphical terminal UI, Assembly syscall wrappers, Linux kernel, procfs and terminal.</desc>
+  <rect width="960" height="540" fill="#101418"/>
+  <text x="48" y="56" fill="#f2f5f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="700">ASM-SysMon v0.3</text>
+  <text x="48" y="86" fill="#aeb8c2" font-family="DejaVu Sans, Arial, sans-serif" font-size="15">C minimalista nas camadas de fluxo e UI; Assembly nas chamadas criticas ao kernel.</text>
+
+  <rect x="48" y="122" width="864" height="82" rx="8" fill="#17212b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="78" y="158" fill="#dbeafe" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Camada C - Orquestracao</text>
+  <text x="78" y="184" fill="#c9d4df" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">main.c coordena refresh, proc.c coleta dados, input.c trata saida limpa.</text>
+
+  <rect x="48" y="236" width="408" height="100" rx="8" fill="#16251f" stroke="#22c55e" stroke-width="2"/>
+  <text x="78" y="274" fill="#dcfce7" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">UI C minimalista</text>
+  <text x="78" y="302" fill="#c9d4df" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">ui.c renderiza moldura, cores ANSI, secoes e indicador de refresh.</text>
+
+  <rect x="504" y="236" width="408" height="100" rx="8" fill="#251c16" stroke="#f59e0b" stroke-width="2"/>
+  <text x="534" y="274" fill="#ffedd5" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Assembly critico</text>
+  <text x="534" y="302" fill="#c9d4df" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">syscalls.asm centraliza open, read, write, poll, nanosleep e exit.</text>
+
+  <rect x="48" y="388" width="408" height="80" rx="8" fill="#191d24" stroke="#94a3b8" stroke-width="2"/>
+  <text x="78" y="424" fill="#e2e8f0" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Fontes Linux</text>
+  <text x="78" y="450" fill="#c9d4df" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">/proc/cpuinfo, /proc/meminfo e /proc/uptime.</text>
+
+  <rect x="504" y="388" width="408" height="80" rx="8" fill="#191d24" stroke="#94a3b8" stroke-width="2"/>
+  <text x="534" y="424" fill="#e2e8f0" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700">Terminal</text>
+  <text x="534" y="450" fill="#c9d4df" font-family="DejaVu Sans, Arial, sans-serif" font-size="14">stdout/stdin com ANSI e entrada por q + Enter.</text>
+
+  <path d="M480 204v30" stroke="#6b7280" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M456 286h46" stroke="#6b7280" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M708 336v48" stroke="#6b7280" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M252 336v48" stroke="#6b7280" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M504 428h-46" stroke="#6b7280" stroke-width="3" marker-end="url(#arrow-left)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-left" markerWidth="10" markerHeight="10" refX="1" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M9,0 L9,6 L0,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+</svg>

@@ -6,9 +6,9 @@ Os diagramas usam Mermaid para manter a documentação versionável no próprio 
 
 ```mermaid
 flowchart LR
-    User[Usuario no terminal] --> Input[input.asm]
-    Main[main.asm] --> Proc[proc.asm]
-    Main --> UI[ui.asm]
+    User[Usuario no terminal] --> Input[input.c]
+    Main[main.c] --> Proc[proc.c]
+    Main --> UI[ui.c]
     Main --> Input
     Proc --> Syscalls[syscalls.asm]
     UI --> Syscalls
@@ -23,10 +23,10 @@ flowchart LR
 ```mermaid
 sequenceDiagram
     participant U as Usuario
-    participant M as main.asm
-    participant P as proc.asm
-    participant UI as ui.asm
-    participant I as input.asm
+    participant M as main.c
+    participant P as proc.c
+    participant UI as ui.c
+    participant I as input.c
     participant K as Kernel Linux
 
     M->>P: read_cpuinfo()
@@ -64,7 +64,6 @@ stateDiagram-v2
 classDiagram
     class Main {
         +_start()
-        +main_loop()
     }
 
     class Proc {

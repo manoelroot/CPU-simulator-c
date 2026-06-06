@@ -12,19 +12,30 @@ Este diretório organiza a documentação técnica do projeto desde a base inici
 
 ## Escopo atual
 
-O ASM-SysMon é um monitor de sistema em Assembly x86_64 para Linux. A versão atual:
+O ASM-SysMon é um monitor de sistema em C freestanding + Assembly x86_64 para Linux. A versão atual:
 
-- compila com NASM;
+- compila C com `gcc -ffreestanding` e Assembly com NASM;
 - usa syscalls Linux diretas;
 - lê `/proc/cpuinfo`, `/proc/meminfo` e `/proc/uptime`;
 - renderiza uma UI ANSI com moldura, cores e indicador animado;
 - permite saída limpa com `q + Enter`.
+- mantém SVG de arquitetura em `src/assets/architecture.svg`.
 
 ## Critérios de evolução
 
 Toda mudança deve preservar:
 
-- simplicidade do código Assembly;
+- simplicidade do código C e Assembly;
 - separação clara entre coleta, UI, entrada e syscalls;
 - execução sem libc;
 - documentação atualizada junto com a implementação.
+
+## Estrutura de commit
+
+Mudanças significativas devem seguir commits pequenos e rastreáveis:
+
+- `feat:` novas capacidades de execução, coleta ou UI;
+- `docs:` atualização de documentação e diagramas;
+- `build:` ajustes de Makefile, flags e artefatos gerados;
+- `refactor:` reorganização sem mudança de comportamento esperado;
+- `chore:` manutenção sem impacto funcional.

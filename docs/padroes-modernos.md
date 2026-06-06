@@ -1,15 +1,16 @@
 # Padrões Modernos Aplicados
 
-Mesmo sendo um projeto em Assembly, ASM-SysMon pode seguir padrões modernos de engenharia.
+Mesmo sendo um projeto de baixo nível em C + Assembly, ASM-SysMon pode seguir padrões modernos de engenharia.
 
 ## Separação de responsabilidades
 
 Cada módulo tem uma responsabilidade clara:
 
-- `main.asm`: coordenação;
-- `proc.asm`: coleta;
-- `ui.asm`: apresentação;
-- `input.asm`: interação;
+- `main.c`: coordenação;
+- `main.c`: coordenação;
+- `proc.c`: coleta;
+- `ui.c`: apresentação;
+- `input.c`: interação;
 - `syscalls.asm`: acesso ao kernel.
 
 Importância:
@@ -20,7 +21,7 @@ Importância:
 
 ## Camada de infraestrutura
 
-`syscalls.asm` funciona como uma camada de infraestrutura. O restante do projeto não precisa repetir números de syscalls diretamente.
+`syscalls.asm` funciona como uma camada de infraestrutura crítica. O restante do projeto usa o contrato de `include/sysmon.h` e não precisa repetir números de syscalls diretamente.
 
 Importância:
 
@@ -40,7 +41,7 @@ Importância:
 
 ## Documentação viva
 
-Diagramas e casos de uso ficam no repositório junto com o código.
+Diagramas, casos de uso e SVGs ficam no repositório junto com o código.
 
 Importância:
 
@@ -50,7 +51,7 @@ Importância:
 
 ## Build reproduzível
 
-O `Makefile` define o caminho esperado para compilar e limpar.
+O `Makefile` define o caminho esperado para compilar C freestanding, montar Assembly NASM, linkar sem libc e limpar.
 
 Importância:
 
@@ -67,3 +68,13 @@ Próximos padrões que podem ser adicionados:
 - testes automatizados de parsing com fixtures;
 - documentação de ADRs para decisões importantes;
 - integração CI com `make` e `git diff --check`.
+
+## SDLC/cascata aplicado
+
+Cada alteração significativa deve avançar por fases explícitas:
+
+- requisito documentado;
+- desenho de camadas e impacto visual;
+- implementação em C ou Assembly conforme criticidade;
+- verificação local com `make`;
+- atualização de histórico, diagramas e padrões.

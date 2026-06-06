@@ -19,7 +19,7 @@ Importância:
 
 ## Marco 1 - Base modular
 
-Foram definidos módulos principais:
+Foram definidos módulos principais na base Assembly inicial:
 
 - `main.asm`: loop principal;
 - `proc.asm`: leitura dos arquivos em `/proc`;
@@ -92,3 +92,23 @@ Importância:
 - mostra que o loop está vivo;
 - melhora feedback visual;
 - mantém implementação simples e compatível com terminal ANSI.
+
+## Marco 7 - Estrutura C + Assembly
+
+A base foi reorganizada para usar C freestanding nas camadas de fluxo, coleta, input e UI, mantendo `syscalls.asm` como ponto crítico de acesso ao kernel.
+
+Importância:
+
+- reduz complexidade de manutenção fora da fronteira crítica;
+- preserva o estudo de syscalls Linux em Assembly;
+- prepara evolução de parsing e métricas com menor atrito.
+
+## Marco 8 - Documentação SDLC e artefato visual
+
+Foi adicionado o SVG `src/assets/architecture.svg` e a documentação passou a explicitar o fluxo SDLC/cascata para mudanças significativas.
+
+Importância:
+
+- registra a arquitetura de camadas de forma visual;
+- padroniza requisitos, projeto, implementação, verificação e manutenção;
+- orienta commits pequenos com prefixos claros.
