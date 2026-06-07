@@ -9,6 +9,8 @@ Este diretório organiza a documentação técnica do projeto desde a base inici
 - [UML](uml/diagramas.md): diagramas em Mermaid para arquitetura e fluxo.
 - [Casos de uso](use-cases/casos-de-uso.md): interações principais do usuário.
 - [Padrões modernos aplicados](padroes-modernos.md): práticas de organização, manutenção e evolução.
+- [Testes e validação](tests.md): roteiro de compilação, execução local e Docker.
+- [Diagramas SVG](diagrams/architecture.svg): artefatos visuais de arquitetura e fluxo.
 
 ## Escopo atual
 
@@ -19,7 +21,7 @@ O ASM-SysMon é um monitor de sistema em C freestanding + Assembly x86_64 para L
 - lê `/proc/cpuinfo`, `/proc/meminfo` e `/proc/uptime`;
 - renderiza uma UI ANSI com moldura, cores e indicador animado;
 - permite saída limpa com `q + Enter`.
-- mantém SVG de arquitetura em `src/assets/architecture.svg`.
+- mantém documentação de testes em `docs/tests.md` e diagramas em `docs/diagrams/`;
 
 ## Critérios de evolução
 

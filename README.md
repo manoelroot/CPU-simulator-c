@@ -30,12 +30,11 @@ q + Enter
 ```text
 include/constants.inc  Constantes de syscall, buffers e refresh
 include/sysmon.h       Contrato C/Assembly e constantes do monitor
-src/main.c             Loop principal freestanding
-src/proc.c             Leitura de /proc
-src/ui.c               Renderização ANSI no terminal
-src/input.c            Entrada de teclado e saída limpa
-src/syscalls.asm       Wrappers de syscalls Linux
-src/assets/            SVGs e artefatos visuais versionáveis
+src/core/main.c        Loop principal freestanding
+src/core/proc.c        Leitura de /proc
+src/ui/ui.c            Renderização ANSI no terminal
+src/input/input.c      Entrada de teclado e saída limpa
+src/syscalls/syscalls.asm  Wrappers de syscalls Linux
 docs/                  Documentação técnica e planejamento
 ```
 
@@ -47,7 +46,8 @@ docs/                  Documentação técnica e planejamento
 - [UML](docs/uml/diagramas.md)
 - [Casos de uso](docs/use-cases/casos-de-uso.md)
 - [Padrões modernos aplicados](docs/padroes-modernos.md)
-- [Arquitetura em SVG](src/assets/architecture.svg)
+- [Testes e validação](docs/tests.md)
+- [Diagramas SVG](docs/diagrams/architecture.svg)
 
 ## Importância
 

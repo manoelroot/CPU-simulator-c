@@ -67,7 +67,7 @@ Ator: desenvolvedor.
 
 Fluxo principal:
 
-1. Desenvolvedor abre `src/assets/architecture.svg`.
+1. Desenvolvedor abre `docs/diagrams/architecture.svg`.
 2. Confere a separação entre C, UI minimalista e Assembly crítico.
 3. Compara o SVG com `docs/architecture/arquitetura.md`.
 

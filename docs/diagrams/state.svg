@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <style>
+    .state { fill:#edf4fd; stroke:#1f3d6f; stroke-width:2; }
+    .text { font:14px sans-serif; fill:#12243d; }
+    .title { font:16px sans-serif; fill:#0d2540; font-weight:700; }
+    .arrow { stroke:#1f3d6f; stroke-width:2; marker-end:url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1f3d6f" />
+    </marker>
+  </defs>
+  <text x="20" y="28" class="title">Diagrama de estados</text>
+  <circle cx="180" cy="110" r="50" class="state" />
+  <text x="150" y="115" class="text">Inicializando</text>
+  <circle cx="420" cy="110" r="50" class="state" />
+  <text x="385" y="115" class="text">Coletando</text>
+  <circle cx="660" cy="110" r="50" class="state" />
+  <text x="630" y="115" class="text">Renderizando</text>
+  <circle cx="420" cy="260" r="50" class="state" />
+  <text x="390" y="265" class="text">Verificando</text>
+  <circle cx="420" cy="370" r="50" class="state" />
+  <text x="395" y="375" class="text">Aguardando</text>
+  <circle cx="660" cy="260" r="50" class="state" />
+  <text x="630" y="265" class="text">Encerrando</text>
+
+  <line x1="230" y1="110" x2="370" y2="110" class="arrow" />
+  <line x1="470" y1="110" x2="610" y2="110" class="arrow" />
+  <line x1="660" y1="160" x2="420" y2="210" class="arrow" />
+  <line x1="420" y1="310" x2="420" y2="320" class="arrow" />
+  <line x1="420" y1="310" x2="420" y2="260" class="arrow" marker-end="url(#arrowhead)" />
+  <line x1="470" y1="260" x2="610" y2="260" class="arrow" />
+  <path d="M680,260 C760,260 760,140 680,140" class="arrow" />
+  <path d="M680,260 C760,260 760,360 680,360" class="arrow" />
+  <line x1="420" y1="420" x2="420" y2="460" class="arrow" />
+</svg>

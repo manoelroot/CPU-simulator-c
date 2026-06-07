@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-ASM-SysMon segue uma arquitetura modular simples em camadas:
+ASM-SysMon segue uma arquitetura modular simples em camadas.
 
 ```text
 Entrada do usuário -> input.c
@@ -14,7 +14,7 @@ main.c -> proc.c -> syscalls.asm -> Linux kernel -> /proc
  ui.c -> syscalls.asm -> Linux kernel -> terminal
 ```
 
-![Arquitetura C e Assembly](../../src/assets/architecture.svg)
+![Arquitetura C e Assembly](../diagrams/architecture.svg)
 
 ## Módulos
 
@@ -44,17 +44,17 @@ Responsável por transformar buffers em saída de terminal.
 Recursos atuais:
 
 - limpeza de tela;
-- moldura ASCII;
-- cores ANSI;
+- moldura Unicode/ANSI;
+- cores e alinhamento de colunas;
 - indicador animado;
-- filtragem simples de linhas relevantes.
+- seção de status e barra de memória.
 
 ### `input.c`
 
 Responsável por entrada não bloqueante simplificada:
 
 - usa `poll`;
-- lê uma tecla quando disponível;
+- lê tecla quando disponível;
 - encerra com `q`;
 - restaura cursor e cores antes do `exit`.
 
@@ -72,22 +72,30 @@ Centraliza wrappers de syscalls:
 
 ## Decisões técnicas
 
-- Usar C freestanding para reduzir complexidade de fluxo, parsing textual e UI.
-- Não usar libc para manter foco didático em syscalls.
-- Manter Assembly nas chamadas críticas ao kernel.
-- Usar `/proc` como fonte de telemetria por ser padrão UNIX/Linux.
-- Usar ANSI escape codes em vez de ncurses para reduzir dependências.
-- Manter buffers fixos para simplificar alocação e controle de memória.
+- Usar C freestanding para reduzir complexidade de fluxo, parsing e UI;
+- não usar libc para manter foco didático em syscalls;
+- manter Assembly nas chamadas críticas ao kernel;
+- usar `/proc` como fonte de telemetria padrão UNIX/Linux;
+- usar ANSI escape codes em vez de ncurses para reduzir dependências;
+- manter buffers fixos para simplificar alocação e controle de memória.
+
+## Diagramas SVG
+
+Os artefatos visuais agora estão centralizados em `docs/diagrams/`:
+
+- `docs/diagrams/architecture.svg`
+- `docs/diagrams/sequence.svg`
+- `docs/diagrams/state.svg`
 
 ## SDLC em cascata
 
-O projeto usa um fluxo de evolução em cascata para mudanças significativas:
+Cada versão do projeto evolui em cinco fases:
 
-1. Requisitos: definir métrica, comportamento esperado e impacto visual.
-2. Projeto: atualizar arquitetura, contratos C/Assembly e artefatos visuais.
-3. Implementação: alterar módulos pequenos e preservar a camada de syscalls.
-4. Verificação: executar `make`, teste manual do binário e revisão dos documentos.
-5. Manutenção: registrar histórico, padrões e estrutura de commit.
+1. Requisitos: definição das métricas, entradas e comportamento esperado;
+2. Projeto: desenho da arquitetura, contratos e impacto visual;
+3. Implementação: alteração dos módulos e preservação das camadas críticas;
+4. Verificação: compilação com `make`, testes de execução e revisão da documentação;
+5. Manutenção: atualização do histórico, dos diagramas e dos padrões de commit.
 
 ## Limitações atuais
 
