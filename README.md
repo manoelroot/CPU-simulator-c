@@ -63,4 +63,4 @@ docs/                  Documentação técnica e planejamento
 
 ## Importância
 
-ASM-SysMon é útil como estudo prático de baixo nível: mostra como um programa Linux pode coletar dados do sistema, controlar terminal e organizar módulos com C freestanding e Assembly crítico, sem depender de runtime externo.
+O ***CPU USAGE LIB*** é útil como estudo prático de baixo nível: mostra como um programa Linux pode coletar dados do sistema, controlar terminal e organizar módulos com C freestanding e Assembly crítico, sem depender de runtime externo.
