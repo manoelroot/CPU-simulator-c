@@ -16,10 +16,12 @@ O ASM-SysMon é um monitor de sistema em C freestanding + Assembly x86_64 para L
 
 - compila C com `gcc -ffreestanding` e Assembly com NASM;
 - usa syscalls Linux diretas;
-- lê `/proc/cpuinfo`, `/proc/meminfo` e `/proc/uptime`;
+- lê `/proc/cpuinfo`, `/proc/stat`, `/proc/meminfo`, `/proc/uptime` e `/proc/loadavg`;
+- calcula uso total, user, system e iowait da CPU a partir de snapshots sucessivos;
+- calcula memória usada, disponível, percentual e estado do swap;
 - renderiza uma UI ANSI com moldura, cores e indicador animado;
 - permite saída limpa com `q + Enter`.
-- mantém SVG de arquitetura em `src/assets/architecture.svg`.
+- mantém SVG de arquitetura e captura da UI em `src/assets/`.
 
 ## Critérios de evolução
 

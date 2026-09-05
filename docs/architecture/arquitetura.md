@@ -10,8 +10,8 @@ Entrada do usuário -> input.c
                          |
 main.c -> proc.c -> syscalls.asm -> Linux kernel -> /proc
    |
-   v
- ui.c -> syscalls.asm -> Linux kernel -> terminal
+  v
+metrics.c -> ui.c -> syscalls.asm -> Linux kernel -> terminal
 ```
 
 ![Arquitetura C e Assembly](../../src/assets/architecture.svg)
@@ -23,6 +23,7 @@ main.c -> proc.c -> syscalls.asm -> Linux kernel -> /proc
 Responsável pelo ciclo de execução:
 
 - chama coleta de CPU, memória e uptime;
+- atualiza o estado derivado em `metrics.c`;
 - chama renderização da UI;
 - verifica entrada do usuário;
 - aguarda o próximo refresh com `nanosleep`.
@@ -34,8 +35,19 @@ Responsável por abrir, ler e fechar arquivos virtuais de `/proc`.
 Arquivos lidos:
 
 - `/proc/cpuinfo`;
+- `/proc/stat`;
 - `/proc/meminfo`;
 - `/proc/uptime`.
+- `/proc/loadavg`.
+
+### `metrics.c`
+
+Mantém snapshots e transforma os buffers de `/proc` em `struct system_metrics`:
+
+- calcula percentuais de CPU entre duas amostras;
+- calcula memória usada, disponível, percentual e swap;
+- extrai carga média, CPUs, processos e uptime;
+- entrega um contrato numérico para a UI, sem parsing na apresentação.
 
 ### `ui.c`
 
@@ -47,7 +59,8 @@ Recursos atuais:
 - moldura ASCII;
 - cores ANSI;
 - indicador animado;
-- filtragem simples de linhas relevantes.
+- filtragem simples do modelo do processador;
+- formatação de métricas numéricas e percentuais.
 
 ### `input.c`
 
@@ -93,5 +106,6 @@ O projeto usa um fluxo de evolução em cascata para mudanças significativas:
 
 - Parsing ainda é textual e simples.
 - O layout assume largura aproximada de 80 colunas.
-- O uptime ainda é exibido no formato bruto de `/proc/uptime`.
+- A primeira amostra de CPU exibe `0.0%`, pois ainda não existe um snapshot anterior.
+- O layout assume largura aproximada de 80 colunas.
 - A leitura de CPU e memória usa campos específicos, sem fallback por localidade.

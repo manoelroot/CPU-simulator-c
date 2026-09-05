@@ -6,7 +6,7 @@ CFLAGS=-std=c11 -Wall -Wextra -Werror -ffreestanding -fno-stack-protector -fno-p
 LD=gcc
 LDFLAGS=-nostdlib -no-pie
 
-CSRC=src/main.c src/ui.c src/proc.c src/input.c
+CSRC=src/main.c src/ui.c src/proc.c src/metrics.c src/input.c
 ASMSRC=src/syscalls.asm
 OBJ=$(CSRC:.c=.o) $(ASMSRC:.asm=.o)
 
