@@ -1,11 +1,15 @@
 #include "sysmon.h"
 
 char cpu_buff[CPU_BUF_SIZE];
+char stat_buff[STAT_BUF_SIZE];
 char mem_buff[MEM_BUF_SIZE];
 char uptime_buff[UPTIME_BUF_SIZE];
+char load_buff[LOAD_BUF_SIZE];
 long cpu_len;
+long stat_len;
 long mem_len;
 long uptime_len;
+long load_len;
 
 static long read_proc_file(const char *path, char *buffer, long capacity)
 {
@@ -31,6 +35,11 @@ void read_cpuinfo(void)
     cpu_len = read_proc_file("/proc/cpuinfo", cpu_buff, CPU_BUF_SIZE);
 }
 
+void read_cpu_stats(void)
+{
+    stat_len = read_proc_file("/proc/stat", stat_buff, STAT_BUF_SIZE);
+}
+
 void read_meminfo(void)
 {
     mem_len = read_proc_file("/proc/meminfo", mem_buff, MEM_BUF_SIZE);
@@ -39,4 +48,9 @@ void read_meminfo(void)
 void read_uptime(void)
 {
     uptime_len = read_proc_file("/proc/uptime", uptime_buff, UPTIME_BUF_SIZE);
+}
+
+void read_loadavg(void)
+{
+    load_len = read_proc_file("/proc/loadavg", load_buff, LOAD_BUF_SIZE);
 }

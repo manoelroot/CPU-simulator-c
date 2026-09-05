@@ -112,3 +112,20 @@ Importância:
 - registra a arquitetura de camadas de forma visual;
 - padroniza requisitos, projeto, implementação, verificação e manutenção;
 - orienta commits pequenos com prefixos claros.
+
+## Marco 9 - Gerenciador de CPU e memória em C
+
+O monitor passou a manter um estado de métricas em `src/metrics.c`, alimentado por `/proc/stat`, `/proc/meminfo`, `/proc/uptime` e `/proc/loadavg`.
+
+Foram adicionados:
+
+- percentuais de CPU total, user, system e iowait;
+- carga média de um minuto, CPUs e processos;
+- memória usada, disponível, percentual e swap;
+- captura visual da interface em `src/assets/terminal.png`.
+
+Importância:
+
+- separa coleta bruta, cálculo e apresentação;
+- evita que a UI interprete diretamente os arquivos virtuais;
+- transforma o protótipo em um monitor de recursos utilizável.

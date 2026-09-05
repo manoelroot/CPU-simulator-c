@@ -7,8 +7,8 @@ Mesmo sendo um projeto de baixo nível em C + Assembly, ASM-SysMon pode seguir p
 Cada módulo tem uma responsabilidade clara:
 
 - `main.c`: coordenação;
-- `main.c`: coordenação;
 - `proc.c`: coleta;
+- `metrics.c`: parsing e cálculo de métricas;
 - `ui.c`: apresentação;
 - `input.c`: interação;
 - `syscalls.asm`: acesso ao kernel.
@@ -64,7 +64,6 @@ Importância:
 Próximos padrões que podem ser adicionados:
 
 - parser dedicado para transformar strings em valores numéricos;
-- camada de métricas separada da camada de leitura bruta;
 - testes automatizados de parsing com fixtures;
 - documentação de ADRs para decisões importantes;
 - integração CI com `make` e `git diff --check`.
